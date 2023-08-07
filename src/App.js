@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 
 const Form = () => {
+  // first step
     const [formContent, setFormContent] = useState([{
         id: 0,
         name: "0",
         label: "Untitled Question",
         required: false,
         question_type: "short_answer",
-        list: []
+        list: [],
     }]);
+
     const [onEdit, setOnEdit] = useState(false);
     const [textField, setTextField] = useState("");
     const [editedField, setEditedField] = useState("");
@@ -55,21 +57,22 @@ const Form = () => {
     };
 
     return (
+      // second step
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'start', alignItems: 'center', padding: '0 16px', height: '100vh', width: '97%', gap: '16px', backgroundColor: '#F3F4F6', overflowX: 'hidden' }}>
 
           <div style={{ display: 'flex', flexDirection: 'column', padding: '16px', backgroundColor: 'white', borderRadius: '0.375rem', justifyContent: 'center', alignItems: 'start', width: '100%', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', borderTop: '0.5rem solid #667EEA', marginBottom: '8px' }}>
               <h1 style={{ fontSize: '1.875rem', fontWeight: '600' }}>Form Header</h1>
               <p style={{ color: 'rgba(0, 0, 0, 0.5)', textTransform: 'capitalize' }}>Form Description</p>
           </div>
-
+{/* third step */}
           <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', width: '97%', gap: '16px' }}>
               {formContent.map((field) => {
                   return (
-                      <div key={field.id} style={{ display: 'flex', backgroundColor: 'white', borderRadius: '0.375rem', width: '100%', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)', padding: '16px' }}>
-                          <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
-                                  <div style={{ fontSize: '0.875rem', fontWeight: '500', color: '#4A5568', textTransform: 'capitalize' }}>
-                                      {onEdit && editedField === field.name ? (
+    <div key={field.id} style={{ display: 'flex', backgroundColor: 'white', borderRadius: '0.375rem', width: '100%', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)', padding: '16px' }}>
+   <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
+      <div style={{ fontSize: '0.875rem', fontWeight: '500', color: '#4A5568', textTransform: 'capitalize' }}>
+         {onEdit && editedField === field.name ? (
                                           <input
                                               type="text"
                                               value={field.label}
@@ -92,6 +95,7 @@ const Form = () => {
                                           </label>
                                       )}
                                   </div>
+
                                   <div>
                                       <select
                                           onChange={(e) => editFieldType(field.name, e.target.value)}
@@ -102,6 +106,7 @@ const Form = () => {
                                           <option value="multichoice">Multichoice</option>
                                       </select>
                                   </div>
+
                               </div>
 
                                 <div className='my-4 w-full'>
